@@ -12,4 +12,6 @@ public class DarkPlatformMover : MonoBehaviour
     {
         transform.Translate(Vector3.up * Time.deltaTime *.5f);
     }
+
+
 }

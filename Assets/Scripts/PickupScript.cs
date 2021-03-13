@@ -10,7 +10,7 @@ public class PickupScript : MonoBehaviour
     public GameObject ExitTextObject;
     public GameObject Exit;
     public GameObject WinTextObject;
-    
+    public GameObject goldencloud;
    
 
     void Start()
@@ -36,7 +36,7 @@ public class PickupScript : MonoBehaviour
             SetCountText();
             other.gameObject.SetActive(false);
         }
-        if (other.gameObject.CompareTag("Exit"))
+        else if (other.gameObject.CompareTag("Exit"))
         {
             WinTextObject.SetActive(true);
            
