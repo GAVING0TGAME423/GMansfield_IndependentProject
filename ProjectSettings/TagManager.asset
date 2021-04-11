@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Exit
   - Pickup
+  - Dark Platform
   layers:
   - Default
   - TransparentFX

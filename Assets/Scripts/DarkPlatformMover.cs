@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class DarkPlatformMover : MonoBehaviour
 {
-
+    private PickupScript pickupscript;
     public GameObject DarkPlatform;
 
-    // Update is called once per frame
+    void Start()
+    {
+        pickupscript = GameObject.Find("Player").GetComponent<PickupScript>();
+    }
     void Update()
     {
-        transform.Translate(Vector3.up * Time.deltaTime *.5f);
+        if(pickupscript.Win == false && pickupscript.Lose == false )
+        {
+            transform.Translate(Vector3.up * Time.deltaTime * .5f);
+        }
     }
 
 
