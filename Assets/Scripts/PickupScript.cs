@@ -13,10 +13,13 @@ public class PickupScript : MonoBehaviour
     public GameObject LoseTextObject;
     public GameObject goldencloud;
     public GameObject particlesGC;
+    public GameObject PowerupTextObject;
     public bool Win = false;
     public bool Lose = false;
+    public bool Wings = false;
     public AudioClip Harp;
-    private AudioSource asPlayer;
+    public AudioClip WingedJump;
+    public AudioSource asPlayer;
     private PlayerMovement playermovement;
     private MouseLook mouselook;
    
@@ -25,12 +28,14 @@ public class PickupScript : MonoBehaviour
     {
         Win = false;
         Lose = false;
+        Wings = false;
         count = 0;
         SetCountText();
         ExitTextObject.SetActive(false);
         Exit.SetActive(false);
         WinTextObject.SetActive(false);
         LoseTextObject.SetActive(false);
+        PowerupTextObject.SetActive(false);
         asPlayer = GetComponent<AudioSource>();
         playermovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
         mouselook = GameObject.Find("Main Camera").GetComponent<MouseLook>();
@@ -63,7 +68,14 @@ public class PickupScript : MonoBehaviour
             playermovement.enabled = false;
             mouselook.enabled = false;
         }
-              
+         else if (other.gameObject.CompareTag("PowerUp"))
+        {
+            Wings = true;
+            Destroy(other.gameObject);
+            PowerupTextObject.SetActive(true);
+        }
+
+
     }
 
    

@@ -13,14 +13,20 @@ public class PlayerMovement : MonoBehaviour
     public float grounddistance = 0.4f;
     public LayerMask groundmask;
     bool isgrounded;
+    private PickupScript pickupscript;
+    
 
-    // Update is called once per frame
+     void Start()
+    {
+        pickupscript  = GameObject.Find("Player").GetComponent<PickupScript>();
+        
+    }
     void Update()
     {
         isgrounded = Physics.CheckSphere(groundcheck.position, grounddistance, groundmask);
         if (isgrounded && velocity.y < 0)
         {
-            velocity.y = -2f; 
+            velocity.y = -2f;
         }
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
@@ -29,13 +35,20 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = transform.right * x + transform.forward * z;
 
         //connects the controller
-        controller.Move(move* speed * Time.deltaTime);
+        controller.Move(move * speed * Time.deltaTime);
 
-        if(Input.GetButtonDown("Jump")&& isgrounded )
+        if (Input.GetButtonDown("Jump") && isgrounded && !pickupscript.Wings)
         {
             velocity.y = Mathf.Sqrt(jumpheight * -2f * gravity);
         }
+        
+        else if (Input.GetButtonDown("Jump") && pickupscript.Wings)
+        {
+            velocity.y = Mathf.Sqrt(jumpheight * -2f * gravity);
+            pickupscript.asPlayer.PlayOneShot(pickupscript.WingedJump, 1);
+        }
+
         velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime );
+        controller.Move(velocity * Time.deltaTime);
     }
 }
