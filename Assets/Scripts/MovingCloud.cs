@@ -48,13 +48,13 @@ public class MovingCloud : MonoBehaviour
     {
         for (float y = 9.5f; y > 1; y -=.5f)
         {
-            Debug.Log(y);
+            
             transform.position = new Vector3(46.6f, y , 33f);
             yield return new WaitForSeconds(.5f);
         }
         for (float y = 1; y < 9.5; y += .5f)
         {
-            Debug.Log(y);
+            
             transform.position = new Vector3(46.6f, y, 33f);
             yield return new WaitForSeconds(.5f);
         }

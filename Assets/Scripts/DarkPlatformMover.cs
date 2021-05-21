@@ -13,7 +13,7 @@ public class DarkPlatformMover : MonoBehaviour
     }
     void Update()
     {
-        if(pickupscript.Win == false && pickupscript.Lose == false )
+        if(pickupscript.gameactive)
         {
             transform.Translate(Vector3.up * Time.deltaTime * .5f);
         }

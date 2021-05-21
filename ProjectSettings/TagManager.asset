@@ -8,6 +8,7 @@ TagManager:
   - Pickup
   - Dark Platform
   - PowerUp
+  - PowerUpCube
   layers:
   - Default
   - TransparentFX
